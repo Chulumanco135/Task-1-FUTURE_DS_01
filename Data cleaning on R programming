@@ -1,0 +1,119 @@
+#Install packages 
+install.packages("tidyverse")
+install.packages("lubridate")
+install.packages("janitor")
+
+#Load libraries
+library(tidyverse)
+library(lubridate)
+library(janitor)
+
+#Import dataset
+data <- read.csv(
+  "C:/Users/user/Videos/data.csv",
+  stringsAsFactors = FALSE
+)
+
+#Check missing values
+colSums(is.na(data))
+
+#Replace missing Customer Ids
+data$CustomerID[is.na(data$CustomerID)] <- "Unknown Customer"
+
+#Create Customer type variable
+data <- data %>%
+  mutate(
+    CustomerType = ifelse(
+      CustomerID == "Unknown Customer",
+      "Anonymous",
+      "Registered"
+    )
+  )
+
+# Create Cancellation flag (verify cancelled transactions)
+data <- data %>%
+  mutate(
+    Cancelled = ifelse(
+      startsWith(InvoiceNo, "C"),
+      1,
+      0
+    )
+  )
+
+#Create main sales dataset
+sales_df <- data %>%
+  filter(Cancelled == 0)
+
+#Remove duplicates
+sales_df <- sales_df %>%
+  distinct(
+    InvoiceNo,
+    StockCode,
+    Description,
+    Quantity,
+    InvoiceDate,
+    UnitPrice,
+    .keep_all = TRUE
+  )
+
+#Convert Invoice date
+sales_df$InvoiceDate <- as.POSIXct(
+  sales_df$InvoiceDate,
+  format = "%m/%d/%Y %H:%M"
+)
+
+#Create time features
+sales_df <- sales_df %>%
+  mutate(
+    Year = year(InvoiceDate),
+    Month = month(InvoiceDate),
+    MonthName = month(InvoiceDate, label = TRUE),
+    Day = day(InvoiceDate),
+    Weekday = wday(InvoiceDate, label = TRUE),
+    Hour = hour(InvoiceDate)
+  )
+
+#Create sales variables
+sales_df <- sales_df %>%
+  mutate(
+    Sales = Quantity * UnitPrice
+  )
+
+#Invalid quantities
+sales_df <- sales_df %>%
+  mutate(
+    InvalidQuantity = ifelse(
+      Quantity <= 0,
+      1,
+      0
+    )
+  )
+
+# Flag invalid prices
+sales_df <- sales_df %>%
+  mutate(
+    InvalidPrice = ifelse(
+      UnitPrice <= 0,
+      1,
+      0
+    )
+  )
+
+#Create product categories
+sales_df <- sales_df %>%
+  mutate(
+    Category = case_when(
+      str_detect(Description, "HEART|LOVE") ~ "Decor",
+      str_detect(Description, "CAKE|BAKING") ~ "Kitchen",
+      str_detect(Description, "CHRISTMAS") ~ "Seasonal",
+      str_detect(Description, "LIGHT|LAMP") ~ "Lighting",
+      TRUE ~ "Other"
+    )
+  )
+
+# Export dataset
+write.csv(
+  sales_df,
+  "C:/Users/user/Videos/cleaned_ecommerce_data.csv",
+  row.names = FALSE
+)
