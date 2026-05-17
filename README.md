@@ -74,3 +74,6 @@ The analysis successfully identified:
 revenue trends, top-selling products, profitable categories,strong-performing regions
 
 The interactive Power BI dashboard provides decision-makers with a clear and simplified view of business performance, enabling more informed strategic decisions related to inventory management, marketing, and revenue growth.
+
+Data
+https://www.kaggle.com/datasets/carrie1/ecommerce-data
