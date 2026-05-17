@@ -52,3 +52,25 @@ Sales=Quantity×UnitPrice
 | Top Selling Products Bar Chart                 | Product demand analysis       |
 | Revenue Contribution by Category (Donut Chart) | Category profitability        |
 | Revenue by Country Chart                       | Regional performance analysis |
+
+# Dashboard Insights
+
+Key insights identified from the analysis include:
+Revenue demonstrates strong monthly growth trends, A small number of products contribute significantly to total sales, Certain product categories dominate overall revenue contribution, Some countries generate substantially higher revenue than others, Seasonal purchasing patterns are visible across monthly sales trends.
+
+# Tools & Technologies Used
+| Tool          | Purpose                         |
+| ------------- | ------------------------------- |
+| R Programming | Data cleaning and preprocessing |
+| Tidyverse     | Data transformation             |
+| Lubridate     | Date manipulation               |
+| Power BI      | Dashboard development           |
+| Excel         | Data inspection and validation  |
+
+# Conclusion 
+This project demonstrates how ecommerce transactional data can be transformed into meaningful business insights using data analytics and business intelligence tools.
+
+The analysis successfully identified:
+revenue trends, top-selling products, profitable categories,strong-performing regions
+
+The interactive Power BI dashboard provides decision-makers with a clear and simplified view of business performance, enabling more informed strategic decisions related to inventory management, marketing, and revenue growth.
