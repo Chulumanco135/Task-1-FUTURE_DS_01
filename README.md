@@ -4,14 +4,9 @@
 # Project Overview
 This project focuses on analyzing ecommerce transactional data to uncover insights related to:
 
-revenue trends
-product performance
-category profitability
-regional sales performance
-customer purchasing behaviour
+revenue trends, product performance, category profitability, regional sales performance, customer purchasing behaviour
 
 The project was developed using:
-
 R Programming for data cleaning and preprocessing
 Microsoft Power BI for interactive dashboard development and business intelligence visualization
 
@@ -21,8 +16,5 @@ Ecommerce businesses generate large volumes of transactional data daily. Analyzi
 
 However, raw ecommerce datasets often contain:
 
-cancelled orders
-missing customer information
-duplicate transactions
-inconsistent product descriptions
+cancelled orders, missing customer information, duplicate transactions, inconsistent product descriptions
 
