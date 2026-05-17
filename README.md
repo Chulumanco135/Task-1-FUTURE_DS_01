@@ -15,7 +15,7 @@ The project was developed using:
 R Programming for data cleaning and preprocessing
 Microsoft Power BI for interactive dashboard development and business intelligence visualization
 
-#Background
+# Background
 
 Ecommerce businesses generate large volumes of transactional data daily. Analyzing this data enables organizations to understand customer purchasing patterns, identify high-performing products, monitor revenue growth, and make data-driven business decisions.
 
