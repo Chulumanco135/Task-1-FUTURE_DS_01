@@ -18,3 +18,19 @@ However, raw ecommerce datasets often contain:
 
 cancelled orders, missing customer information, duplicate transactions, inconsistent product descriptions
 
+# Problem Statement
+Businesses often struggle to identify:
+
+1. which products generate the highest revenue
+which categories contribute most to profitability
+which regions perform best
+how revenue changes over time
+
+Without proper analysis, decision-makers may fail to:
+
+optimize inventory
+prioritize profitable product categories
+improve marketing strategies
+identify sales growth opportunities
+
+This project addresses these challenges through data cleaning, exploratory analysis, and dashboard visualization.
